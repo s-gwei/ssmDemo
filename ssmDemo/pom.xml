@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>sungw</groupId>
-  <artifactId>ssmDemo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>sungw</groupId>
+	<artifactId>ssmDemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>ssmDemo</name>
-  <url>http://maven.apache.org</url>
+	<name>ssmDemo</name>
+	<url>http://maven.apache.org</url>
 
- 
-  
+
+
 	<!-- 这是Spring Boot的父级依赖，这样当前的项目就是Spring Boot项目了。 -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,13 +19,17 @@
 		<version>2.0.0.RELEASE</version>
 	</parent>
 	<properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
- 	<dependencies>
- 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
 
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 		<!--整合springmvc-web, -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,35 +52,46 @@
 			<version>5.1.40</version>
 		</dependency>
 		<dependency>
-			    <groupId>org.springframework.boot</groupId>
-			    <artifactId>spring-boot-devtools</artifactId>
-			    <optional>true</optional>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- 配置jwt -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
-<!-- 	//打包时没有主清单属性 -->
+	<!-- //打包时没有主清单属性 -->
 	<build>
-  <plugins>
-      <plugin>
-          <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-maven-plugin</artifactId>
-          <configuration>
-                    <mainClass>com.sun.Application</mainClass>
-        </configuration>
-      </plugin>
-      
-  </plugins>
-  <resources>  
-	        <resource>  
-	            <directory>src/main/java</directory>  
-	            <includes>  
-	                <include>**/*.xml</include>  
-	            </includes>  
-	        </resource>  
-	        <resource>  
-	            <directory>src/main/resources</directory>  
-	        </resource>  
-	    </resources>
- </build>
-     
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.sun.Application</mainClass>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
+
 
 </project>
